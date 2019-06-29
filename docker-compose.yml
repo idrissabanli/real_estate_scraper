@@ -6,7 +6,7 @@ services:
     container_name:  postgres-db
     image:           postgres:9.6.6
     ports:
-      - 5432:5432 # Bind host port 5432 to PostgreSQL port 5432
+      - 5440:5432 # Bind host port 5432 to PostgreSQL port 5432
     volumes:
       - ./pgdb:/var/lib/postgresql/data
     env_file: .env
@@ -21,7 +21,7 @@ services:
     restart: "always"
     container_name: redis
     ports:
-      - 6379:6379
+      - 6380:6379
     volumes:
       - ./redisdb:/var/lib/redis
     env_file: .env
