@@ -1,6 +1,5 @@
 from django.db import models
 from django.utils.translation import ugettext_lazy as _
-from django.utils.timezone import now as datetime_now
 
 # Create your models here.
 
@@ -24,8 +23,6 @@ class RealEstateDetail(models.Model):
     name = models.CharField(_('Name'), max_length=150)
     search_word = models.ForeignKey(SearchWord, related_name='real_estate_detail', on_delete=models.CASCADE)
     url = models.URLField(_('Url'))
-    work_phone = models.CharField(_('Work phone'), max_length=150, null=True, blank=True)
-    mobile_phone = models.CharField(_('Mobile phone'), max_length=150, null=True, blank=True)
     agency_name = models.CharField(_('Agency name'), max_length=150, null=True, blank=True)
     realtor_name = models.CharField(_('Realtor name'), max_length=150, null=True, blank=True)
     city = models.CharField(_('City'), max_length=150, null=True, blank=True)
@@ -41,3 +38,19 @@ class RealEstateDetail(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class PhoneNumber(models.Model):
+    real_estate = models.ForeignKey(RealEstateDetail, on_delete=models.CASCADE, related_name='phone_numbers')
+    title = models.CharField(_('Title'), max_length=10)
+    phone = models.CharField(_('Number'), max_length=30)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = _('Phone number')
+        verbose_name_plural = _('Phone numbers')
+        ordering = ['-created_at']
+
+    def __str__(self):
+        return self.real_estate.name
