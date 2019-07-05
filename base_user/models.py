@@ -48,8 +48,8 @@ class MyUser(AbstractBaseUser, PermissionsMixin):
     REQUIRED_FIELDS = ['email']
 
     class Meta:
-        verbose_name = 'İstifadəçi'
-        verbose_name_plural = 'İstifadəçilər'
+        verbose_name = _('Kullanıcı')
+        verbose_name_plural = _('Kullanıcılar')
 
     def get_full_name(self):
         """
