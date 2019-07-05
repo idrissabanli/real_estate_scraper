@@ -1,5 +1,10 @@
 # README #
 
+### About Project ###
+
+This project is designed to collect information about owners and agents from property ads on [www.sahibinden.com](https://www.sahibinden.com/). The [lxml](https://lxml.de/) library for scraping is used in the project.
+
+
 # real_estate_scraper Project #
 
 ### --- Create project with create-django-app module ###
