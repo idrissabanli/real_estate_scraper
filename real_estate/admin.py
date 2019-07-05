@@ -26,6 +26,7 @@ class RealEstateDetailAdmin(admin.ModelAdmin):
     inlines = [PhoneNumberInline]
     list_display = ('agency_name', 'realtor_name', 'city', 'district', 'street',  'phone_number', 'created_at',)
     search_fields = ('name',)
+    list_filter = ('street', 'district', 'city', )
 
     def phone_number(self, obj):
         return [(number.title+ ' ' + number.phone) for number in obj.phone_numbers.all()]
